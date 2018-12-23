@@ -1,3 +1,6 @@
 
 *.xml
 CompetitiveJava.iml
+out/
+*.class
+*.class
