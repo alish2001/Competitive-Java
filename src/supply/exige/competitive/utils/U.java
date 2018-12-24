@@ -20,4 +20,39 @@ public class U {
      for the case when x is 0 */
         return x != 0 && ((x & (x - 1)) == 0);
     }
+
+    /**
+     * Rotates a 1D array in 2 dimensions based on multiples of 90
+     * @param array 1-Dimensional Array
+     * @param multiple multiple of 90 degrees
+     * @param width width of the supposed 2D array
+     * @param height height of the supposed 2D array
+     */
+    public static void rotateArray(int[] array, int multiple, int width, int height) { // Clockwise
+        int[] og = array.clone();
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                int x_RotationalIndex = x;
+                int y_RotationalIndex = y;
+
+                if (multiple == 1) {
+                    x_RotationalIndex = y;
+                    y_RotationalIndex = height - 1 - x;
+                } else if (multiple == 3) {
+                    x_RotationalIndex = width - 1 - y;
+                    y_RotationalIndex = x;
+
+                } else if (multiple == 2) {
+                    x_RotationalIndex = width - 1 - x;
+                    y_RotationalIndex = height - 1 - y;
+                }
+
+                array[get2DIndex(x, y, width)] = og[get2DIndex(x_RotationalIndex, y_RotationalIndex, width)];
+            }
+        }
+    }
+
+    public static int get2DIndex(int x, int y, int N) {
+        return x + y * N;
+    }
 }
