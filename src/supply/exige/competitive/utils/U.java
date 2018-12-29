@@ -3,6 +3,20 @@ package supply.exige.competitive.utils;
 public class U {
 
     /**
+     * Rounds floating point error results to a certain precision degree.
+     *
+     * @param input     - the input
+     * @param precision - the precision degree
+     * @return FP-Corrected input at the desired precision degree
+     */
+    public static double roundFloatingPointError(double input, int precision) {
+        input *= Math.pow(10, precision); // Multiply the FP-Errored input by 10 to the precision degree
+        input = Math.round(input); // Round the result to the nearest integer
+        input /= Math.pow(10, precision); // Shift decimal to original point
+        return input; // Return corrected input
+    }
+
+    /**
      * @param n input integer
      * @return number of digits the input has
      */
