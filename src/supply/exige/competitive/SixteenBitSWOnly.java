@@ -8,17 +8,20 @@ public class SixteenBitSWOnly {
 
     public static void main(String[] args) throws IOException {
         Reader reader = new Reader();
-        int numberOfProblems = reader.nextInt();
-        int[] solver = new int[numberOfProblems];
-        for (int i = 0; i < numberOfProblems; i++) {
-            long result = reader.nextLong() * reader.nextLong();
-            long projectedResult = reader.nextLong();
-
-            solver[i] = (projectedResult == result) ? 1 : 0;
+        int win = 0;
+        for (int i = 0; i < 6; i++) {
+            if (reader.readLine().contains("W")) win++;
         }
 
-        for (int i = 0; i < solver.length; i++) {
-            System.out.println(solver[i] == 0 ? "16 BIT S/W ONLY" : "POSSIBLE DOUBLE SIGMA");
+        if (win == 5 || win == 6) {
+            System.out.println("1");
+        } else if (win == 3 || win == 4) {
+            System.out.println("2");
+        } else if (win == 1 || win == 2) {
+            System.out.println("3");
+        } else {
+            System.out.println("-1");
         }
+
     }
 }
