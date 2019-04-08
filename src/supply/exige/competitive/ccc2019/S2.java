@@ -16,11 +16,11 @@ public class S2 {
 
         for (int i = 0; i < testCases.length; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            testCases[i] = Integer.parseInt(st.nextToken());
+            testCases[i] = Integer.parseInt(st.nextToken()) * 2;
             if (testCases[i] > maxNum) maxNum = testCases[i];
         }
 
-        List<Integer> primes = createPrimes(maxNum*2);
+        List<Integer> primes = createPrimes(maxNum);
 
         for (int i = 0; i < testCases.length; i++) {
             System.out.println(getPrime(testCases[i], primes));
@@ -30,13 +30,13 @@ public class S2 {
     public static String getPrime(int input, List<Integer> primes) {
         int primesMaxIndex = primes.size() - 1;
         if (primes.contains(input)) return input + " " + input; // If input is a prime
-        for (int prime1Index = 0; prime1Index < primesMaxIndex/2; prime1Index++) {
+        for (int prime1Index = 0; prime1Index < primesMaxIndex; prime1Index++) {
             for (int prime2Index = 0; prime2Index < primesMaxIndex; prime2Index++) {
                 int prime1 = primes.get(prime1Index);
                 int prime2 = primes.get(prime2Index);
 
                 if ((prime1 + prime2) % 2 != 0) continue;
-                int primeOutput = (primes.get(prime1Index) + primes.get(prime2Index)) / 2;
+                int primeOutput = (primes.get(prime1Index) + primes.get(prime2Index));
 
                 if (input == primeOutput) return primes.get(prime1Index) + " " + primes.get(prime2Index);
             }
