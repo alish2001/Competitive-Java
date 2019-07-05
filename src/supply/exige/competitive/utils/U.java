@@ -3,6 +3,38 @@ package supply.exige.competitive.utils;
 public class U {
 
     /**
+     * Returns an array of the possible factors of a number
+     *
+     * @param num   number you want to retrieve the factors of
+     * @param prime if the factors should be prime or not
+     * @return int[] Factors
+     */
+    public static int[] factorsOf(int num, boolean prime) {
+        int limit = (int) Math.ceil(Math.sqrt(num));
+        int[] numArray = new int[limit];
+        int index = 0;
+
+        if (prime) {
+            for (int i = 1; i <= limit; i++) {
+                if (num % i == 0) {
+                    numArray[index++] = i;
+                    num /= i;
+                }
+            }
+        } else {
+            for (int i = 1; i <= num; i++) {
+                System.out.println(index);
+                if (num % i == 0) {
+                    index++;
+                    numArray[index] = i;
+                }
+            }
+        }
+        numArray[index] = num;
+        return numArray;
+    }
+
+    /**
      * Rounds floating point error results to a certain precision degree.
      *
      * @param input     - the input
@@ -26,6 +58,7 @@ public class U {
 
     /**
      * Method to check if x is power of 2
+     *
      * @param x input
      * @return isPowerOfTwo
      */
@@ -37,10 +70,11 @@ public class U {
 
     /**
      * Rotates a 1D array in 2 dimensions based on multiples of 90
-     * @param array 1-Dimensional Array
+     *
+     * @param array    1-Dimensional Array
      * @param multiple multiple of 90 degrees
-     * @param width width of the supposed 2D array
-     * @param height height of the supposed 2D array
+     * @param width    width of the supposed 2D array
+     * @param height   height of the supposed 2D array
      */
     public static void rotateArray(int[] array, int multiple, int width, int height) { // Clockwise
         int[] og = array.clone();
